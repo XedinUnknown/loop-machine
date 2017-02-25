@@ -52,9 +52,9 @@ abstract class AbstractLoopMachine
      * @var array
      */
     protected static $states = array(
-        LoopMachineInterface::STATE_START   => null,
-        LoopMachineInterface::STATE_LOOP    => null,
-        LoopMachineInterface::STATE_END     => null,
+        LoopMachineInterface::STATE_START => null,
+        LoopMachineInterface::STATE_LOOP  => null,
+        LoopMachineInterface::STATE_END   => null,
     );
 
     /**
@@ -116,9 +116,9 @@ abstract class AbstractLoopMachine
      *
      * @param ValueAwareInterface $state The state of the machine.
      *
-     * @return AbstractLoopMachine This instance.
-     *
      * @throws InvalidStateExceptionInterface If the given state is not valid.
+     *
+     * @return AbstractLoopMachine This instance.
      */
     protected function _setCurrentState(ValueAwareInterface $state)
     {
@@ -164,12 +164,13 @@ abstract class AbstractLoopMachine
      * @since [*next-version*]
      *
      * @param StateInterface $state The state to validate.
+     *
      * @return bool True if the given state is valid; false otherwise.
      */
     protected function _isValidStateValue($state)
     {
-        $states = $this->_getStates();
-        $values = array_keys($states);
+        $states  = $this->_getStates();
+        $values  = array_keys($states);
         $isValid = in_array($state, $values, true);
 
         return $isValid;
@@ -181,6 +182,7 @@ abstract class AbstractLoopMachine
      * @since [*next-version*]
      *
      * @param mixed $value The state value that must be valid.
+     *
      * @throws InvalidStateExceptionInterface If state value is invalid.
      */
     protected function _assertValidStateValue($value)
@@ -196,6 +198,7 @@ abstract class AbstractLoopMachine
      * @since [*next-version*]
      *
      * @param mixed $state The state to validate.
+     *
      * @return bool True if the state is valid; false otherwise.
      */
     protected function _isValidState($state)
@@ -209,6 +212,7 @@ abstract class AbstractLoopMachine
      * @since [*next-version*]
      *
      * @param mixed $state The state that must be valid.
+     *
      * @throws InvalidStateExceptionInterface If state is invalid.
      */
     protected function _assertValidState($state)
@@ -223,10 +227,10 @@ abstract class AbstractLoopMachine
      *
      * @since [*next-version*]
      *
-     * @param string $message The message of the exception.
-     * @param mixed $state The state which was attempted.
-     * @param LoopMachineInterface $machine The machine, on which the state was attempted to be set.
-     * @param \Exception $previous A previous, inner exception, if any.
+     * @param string               $message  The message of the exception.
+     * @param mixed                $state    The state which was attempted.
+     * @param LoopMachineInterface $machine  The machine, on which the state was attempted to be set.
+     * @param \Exception           $previous A previous, inner exception, if any.
      *
      * @return InvalidStateExceptionInterface The new exception.
      */
@@ -237,7 +241,7 @@ abstract class AbstractLoopMachine
      *
      * @since [*next-version*]
      *
-     * @param string $message The message of the exception.
+     * @param string     $message  The message of the exception.
      * @param \Exception $previous A previous, inner exception, if any.
      *
      * @return ExceptionInterface The new exception.
@@ -383,8 +387,7 @@ abstract class AbstractLoopMachine
      * @since [*next-version*]
      *
      * @param Iterator|array $iterable The iterable.
-     *
-     * @param mixed $item The loop item.
+     * @param mixed          $item     The loop item.
      *
      * @return AbstractLoopMachine This instance.
      */
@@ -424,15 +427,15 @@ abstract class AbstractLoopMachine
      */
     protected function _getSortedObservers()
     {
-        $array = $this->_splObjectStorageToArray($this->observers);
-        $idxData = static::$storageDataIndex;
+        $array     = $this->_splObjectStorageToArray($this->observers);
+        $idxData   = static::$storageDataIndex;
         $idxObject = static::$storageObjectIndex;
 
-        usort($array, function($a, $b) use ($idxData) {
+        usort($array, function ($a, $b) use ($idxData) {
             return (int) $a[$idxData] < (int) $b[$idxData];
         });
 
-        return array_map(function($item) use ($idxObject) {
+        return array_map(function ($item) use ($idxObject) {
             return $item[$idxObject];
         }, $array);
     }
@@ -445,8 +448,8 @@ abstract class AbstractLoopMachine
      * @param SplObjectStorage $storage The object storage. Must have integer-like values.
      *
      * @return array A list of observer data maps, where each element has the following keys:
-     * `obj` - The observer instance;
-     * `data` - The data associated with the observer, as a result of {@see SplObjectStorage::getInfo()} for that observer.
+     *               `obj` - The observer instance;
+     *               `data` - The data associated with the observer, as a result of {@see SplObjectStorage::getInfo()} for that observer.
      */
     protected function _splObjectStorageToArray(SplObjectStorage $storage)
     {
@@ -455,9 +458,10 @@ abstract class AbstractLoopMachine
             /* @var $_observer SplObserver */
             $result[] = array(
                 static::$storageObjectIndex => $_observer,
-                static::$storageDataIndex   => $storage->getInfo()
+                static::$storageDataIndex   => $storage->getInfo(),
             );
         }
+
         return $result;
     }
 
@@ -467,6 +471,7 @@ abstract class AbstractLoopMachine
      * @since [*next-version*]
      *
      * @param mixed $state The original value.
+     *
      * @return mixed The resolved value.
      */
     protected function _resolveState($state)
@@ -505,15 +510,16 @@ abstract class AbstractLoopMachine
      * @since [*next-version*]
      *
      * @param int|string|bool|float $value The value of the state.
-     * @return ValueAwareInterface The state instance.
      *
      * @throws InvalidStateExceptionInterface If the value is not valid.
+     *
+     * @return ValueAwareInterface The state instance.
      */
     protected function _getStateInstance($value)
     {
         if (!isset(static::$states[$value])) {
             $this->_assertValidStateValue($value);
-            $state = $this->_createStateInstance($value);
+            $state                  = $this->_createStateInstance($value);
             static::$states[$value] = $state;
         }
 

@@ -17,7 +17,7 @@ interface StateInterface extends ValueAwareInterface, StringableInterface
      *
      * @since [*next-version*]
      *
-     * @param mixed $state A machine state representation.
+     * @param ValueAwareInterface|mixed $state A machine state representation.
      *
      * @return bool True if this state is equivalent to the given state; false otherwise.
      */

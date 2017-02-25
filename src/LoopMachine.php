@@ -118,5 +118,4 @@ class LoopMachine extends AbstractLoopMachine implements LoopMachineInterface
     {
         return new State($value);
     }
-
 }

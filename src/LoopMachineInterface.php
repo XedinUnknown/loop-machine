@@ -12,7 +12,6 @@ use SplSubject;
  */
 interface LoopMachineInterface extends SplSubject
 {
-
     /**
      * Indicates that the machine is about to begin processing.
      *
@@ -38,7 +37,6 @@ interface LoopMachineInterface extends SplSubject
      * Retrieves the current state of the machine.
      *
      * @since [*next-version*]
-     *
      * @see STATE_START
      * @see STATE_LOOP
      * @see STATE_END
@@ -64,5 +62,4 @@ interface LoopMachineInterface extends SplSubject
      * @param Iterator|array $iterable The iterable.
      */
     public function process($iterable);
-
 }

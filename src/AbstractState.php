@@ -47,6 +47,7 @@ abstract class AbstractState
      * @since [*next-version*]
      *
      * @param int|string|bool|float $value The value.
+     *
      * @return AbstractState This instance.
      */
     protected function _setValue($value)
@@ -63,11 +64,12 @@ abstract class AbstractState
      * @since [*next-version*]
      *
      * @param mixed $state The state to compare this state to.
+     *
      * @return bool True if this state is equivalent to the given state; false otherwise.
      */
     protected function _isEqualTo($state)
     {
-        $state = $this->_resolveState($state);
+        $state        = $this->_resolveState($state);
         $currentState = $this->_getValue();
 
         try {
@@ -86,8 +88,10 @@ abstract class AbstractState
      *
      * @param int|string|bool|float $a A scalar value.
      * @param int|string|bool|float $b A scalar value.
-     * @return int Returns < 0 if $a is less than $b; > 0 if $a is greater than $b; or 0 if they are equal.
+     *
      * @throws \InvalidArgumentException If at least one of the parameters is not scalar.
+     *
+     * @return int Returns < 0 if $a is less than $b; > 0 if $a is greater than $b; or 0 if they are equal.
      */
     protected function _compareStateValues($a, $b)
     {
@@ -100,6 +104,7 @@ abstract class AbstractState
 
         if (is_string($a)) {
             $b = (string) $b;
+
             return strcmp($a, $b);
         }
 
@@ -110,13 +115,12 @@ abstract class AbstractState
         return (int) ($a > $b);
     }
 
-
     /**
      * Creates a generic loop machine exception.
      *
      * @since [*next-version*]
      *
-     * @param string $message The message of the exception.
+     * @param string     $message  The message of the exception.
      * @param \Exception $previous A previous, inner exception, if any.
      *
      * @return ExceptionInterface The new exception.
@@ -128,10 +132,10 @@ abstract class AbstractState
      *
      * @since [*next-version*]
      *
-     * @param string $message The message of the exception.
-     * @param mixed $state The state which was attempted.
-     * @param LoopMachineInterface $machine The machine, on which the state was attempted to be set.
-     * @param \Exception $previous A previous, inner exception, if any.
+     * @param string               $message  The message of the exception.
+     * @param mixed                $state    The state which was attempted.
+     * @param LoopMachineInterface $machine  The machine, on which the state was attempted to be set.
+     * @param \Exception           $previous A previous, inner exception, if any.
      *
      * @return InvalidStateExceptionInterface The new exception.
      */
@@ -143,6 +147,7 @@ abstract class AbstractState
      * @since [*next-version*]
      *
      * @param mixed $state The original value.
+     *
      * @return mixed The resolved value.
      */
     protected function _resolveState($state)
@@ -170,6 +175,7 @@ abstract class AbstractState
      * @since [*next-version*]
      *
      * @param mixed $value The value to validate.
+     *
      * @return bool True if the specified value is valid; false otherwise.
      */
     protected function _isValueValid($value)
@@ -183,6 +189,7 @@ abstract class AbstractState
      * @since [*next-version*]
      *
      * @param mixed $value The value that must be valid.
+     *
      * @throws ExceptionInterface If value is invalid.
      */
     protected function _assertValueValid($value)

@@ -16,7 +16,7 @@ class InvalidStateException extends AbstractInvalidStateException implements Inv
      *
      * @since [*next-version*]
      *
-     * @param mixed $state The state that was determined to be invalid.
+     * @param mixed                $state   The state that was determined to be invalid.
      * @param LoopMachineInterface $machine The machine related to this exception, if any.
      */
     public function __construct($message = '', $code = 0, \Exception $previous = null, $state = null, LoopMachineInterface $machine = null)
