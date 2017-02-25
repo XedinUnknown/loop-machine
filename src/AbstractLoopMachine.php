@@ -130,6 +130,23 @@ abstract class AbstractLoopMachine
     }
 
     /**
+     * Sets a state instance corresponding to the specified value as the current state.
+     *
+     * @since [*next-version*]
+     *
+     * @param int|string|bool|float $value The value of the state to set.
+     *
+     * @return AbstractLoopMachine This instance.
+     */
+    protected function _setCurrentValue($value)
+    {
+        $state = $this->_getStateInstance($value);
+        $this->_setCurrentState($state);
+
+        return $this;
+    }
+
+    /**
      * A list of all possible states of this machine.
      *
      * @since [*next-version*]
@@ -353,7 +370,7 @@ abstract class AbstractLoopMachine
      */
     protected function _processStart($iterable)
     {
-        $this->_setCurrentState(static::STATE_START)
+        $this->_setCurrentValue(static::STATE_START)
             ->_setCurrentItem(null)
             ->_notify();
 
@@ -373,7 +390,7 @@ abstract class AbstractLoopMachine
      */
     protected function _processLoop($iterable, $item)
     {
-        $this->_setCurrentState(static::STATE_LOOP)
+        $this->_setCurrentValue(static::STATE_LOOP)
             ->_setCurrentItem($item)
             ->_notify();
 
@@ -391,7 +408,7 @@ abstract class AbstractLoopMachine
      */
     protected function _processEnd($iterable)
     {
-        $this->_setCurrentState(static::STATE_END)
+        $this->_setCurrentValue(static::STATE_END)
             ->_setCurrentItem(null)
             ->_notify();
 
