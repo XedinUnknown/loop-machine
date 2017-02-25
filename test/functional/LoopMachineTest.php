@@ -70,9 +70,10 @@ class LoopMachineTest extends TestCase
         $items = array();
         $states = array();
         $observer = $this->createObserver(function(LoopMachineInterface $machine) use (&$items, &$states) {
-            $states[] = $machine->getCurrentState()->getValue();
+            $state = $machine->getCurrentState();
+            $states[] = $state->getValue();
 
-            if ($machine->getCurrentState()->isEqualTo(LoopMachineInterface::STATE_LOOP)) {
+            if ($state->isEqualTo(LoopMachineInterface::STATE_LOOP)) {
                 $items[] = $machine->getCurrentItem();
             }
         });
