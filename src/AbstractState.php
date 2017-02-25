@@ -76,7 +76,7 @@ abstract class AbstractState
             throw $this->_createInvalidStateException(sprintf('Could not determine equivalence state "%1$s"', $currentState), $state, null, $e);
         }
 
-        return $this->_compareStateValues($currentState, $b);
+        return !$this->_compareStateValues($currentState, $state);
     }
 
     /**
