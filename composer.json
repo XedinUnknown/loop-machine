@@ -26,5 +26,10 @@
         "psr-4": {
             "XedinUnknown\\LoopMachine\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "XedinUnknown\\LoopMachine\\TestStub\\": "test/stub"
+        }
     }
 }
