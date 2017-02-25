@@ -170,7 +170,7 @@ abstract class AbstractLoopMachine
     {
         $states = $this->_getStates();
         $values = array_keys($states);
-        $isValid = in_array($value, $states, true);
+        $isValid = in_array($state, $values, true);
 
         return $isValid;
     }
