@@ -47,9 +47,8 @@ class LoopMachineTest extends TestCase
      */
     public function createObserver($callback)
     {
-        $mock = $this->mock('SplObserver')
-                ->update($callback)
-                ->new();
+        $mock = $this->mock('XedinUnknown\LoopMachine\TestStub\\Observer')
+                ->new($callback);
 
         return $mock;
     }
