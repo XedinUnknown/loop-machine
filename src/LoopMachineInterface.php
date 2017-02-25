@@ -2,6 +2,7 @@
 
 namespace XedinUnknown\LoopMachine;
 
+use Dhii\Machine\FiniteStateMachineInterface;
 use Iterator;
 use SplSubject;
 
@@ -10,7 +11,9 @@ use SplSubject;
  *
  * @since [*next-version*]
  */
-interface LoopMachineInterface extends SplSubject
+interface LoopMachineInterface extends
+    FiniteStateMachineInterface,
+    SplSubject
 {
     /**
      * Indicates that the machine is about to begin processing.

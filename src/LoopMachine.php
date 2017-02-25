@@ -2,6 +2,7 @@
 
 namespace XedinUnknown\LoopMachine;
 
+use Dhii\Data\ValueAwareInterface;
 use SplObserver;
 use XedinUnknown\LoopMachine\Exception\Exception;
 use XedinUnknown\LoopMachine\Exception\InvalidStateException;
@@ -117,5 +118,18 @@ class LoopMachine extends AbstractLoopMachine implements LoopMachineInterface
     protected function _createStateInstance($value)
     {
         return new State($value);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    public function getStates()
+    {
+        $stateValues = array_keys($this->_getStates());
+        $states      = array_map(array($this, '_getStateInstance'), $stateValues);
+
+        return $states;
     }
 }

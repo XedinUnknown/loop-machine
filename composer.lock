@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "92b7b389397dd32f236b19359181ba08",
-    "content-hash": "931ef8f631f26d55b8e9ae27015cb089",
+    "hash": "48e9f19f15dd83767dba32003927291b",
+    "content-hash": "39b6fb1f44b23b9f8badcbfc0e54e62b",
     "packages": [
         {
             "name": "dhii/data-key-value-aware-interface",
@@ -48,6 +48,53 @@
             ],
             "description": "Interfaces that aim to increase interoperability of value objects",
             "time": "2017-01-21 17:35:30"
+        },
+        {
+            "name": "dhii/state-machine-interface",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/machine-state-machine-interface.git",
+                "reference": "908a7406eeb97bb46704afc16d77aadf252bce6a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/machine-state-machine-interface/zipball/908a7406eeb97bb46704afc16d77aadf252bce6a",
+                "reference": "908a7406eeb97bb46704afc16d77aadf252bce6a",
+                "shasum": ""
+            },
+            "require": {
+                "dhii/data-key-value-aware-interface": "^0.1.0",
+                "dhii/stringable-interface": "^0.1.0",
+                "php": "^5.3 | ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Machine\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "A set of interfaces for state machines.",
+            "support": {
+                "source": "https://github.com/Dhii/machine-state-machine-interface/tree/develop",
+                "issues": "https://github.com/Dhii/machine-state-machine-interface/issues"
+            },
+            "time": "2017-02-25 16:39:00"
         },
         {
             "name": "dhii/stringable-interface",
@@ -2093,6 +2140,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "dhii/state-machine-interface": 20,
         "dhii/php-cs-fixer-config": 20
     },
     "prefer-stable": false,
