@@ -1,0 +1,24 @@
+{
+    "name": "xedinunknown/loop-machine",
+    "description": "Provides an event-less interface into a loop's events.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anton Ukhanev",
+            "email": "xedin.unknown@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php":  "^5.3",
+        "dhii/data-key-value-aware-interface": "^0.1",
+        "dhii/stringable-interface": "^0.1"
+    },
+    "require-dev": {
+        "dhii/php-cs-fixer-config": "dev-php-5.3",
+        "phpunit/phpunit": "^4.8",
+        "ptrofimov/xpmock": "^1.1",
+        "codeclimate/php-test-reporter": "<=0.3.2"
+    }
+}
