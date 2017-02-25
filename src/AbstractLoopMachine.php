@@ -428,11 +428,11 @@ abstract class AbstractLoopMachine
         $idxData = static::$storageDataIndex;
         $idxObject = static::$storageObjectIndex;
 
-        usort($array, function($a, $b) {
+        usort($array, function($a, $b) use ($idxData) {
             return (int) $a[$idxData] < (int) $b[$idxData];
         });
 
-        return array_map(function($item) {
+        return array_map(function($item) use ($idxObject) {
             return $item[$idxObject];
         }, $array);
     }
