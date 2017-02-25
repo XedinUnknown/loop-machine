@@ -425,13 +425,15 @@ abstract class AbstractLoopMachine
     protected function _getSortedObservers()
     {
         $array = $this->_splObjectStorageToArray($this->observers);
+        $idxData = static::$storageDataIndex;
+        $idxObject = static::$storageObjectIndex;
 
         usort($array, function($a, $b) {
-            return (int) $a[static::$storageDataIndex] < (int) $b[static::$storageDataIndex];
+            return (int) $a[$idxData] < (int) $b[$idxData];
         });
 
         return array_map(function($item) {
-            return $item[static::$storageObjectIndex];
+            return $item[$idxObject];
         }, $array);
     }
 
