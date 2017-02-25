@@ -125,16 +125,6 @@ class LoopMachine extends AbstractLoopMachine implements LoopMachineInterface
      *
      * @since [*next-version*]
      */
-    public function canTransitionTo(ValueAwareInterface $state)
-    {
-        return $this->_isValidState($state);
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @since [*next-version*]
-     */
     public function getStates()
     {
         $stateValues = array_keys($this->_getStates());
