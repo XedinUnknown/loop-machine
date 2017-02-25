@@ -515,6 +515,6 @@ abstract class AbstractLoopMachine
             static::$states[$value] = $state;
         }
 
-        return static::$states;
+        return static::$states[$value];
     }
 }
