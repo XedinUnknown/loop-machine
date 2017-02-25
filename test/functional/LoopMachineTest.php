@@ -68,15 +68,25 @@ class LoopMachineTest extends TestCase
             'orange'
         );
 
+        $items = array();
         $states = array();
-        $observer = $this->createObserver(function(LoopMachineInterface $machine) use (&$states) {
+        $observer = $this->createObserver(function(LoopMachineInterface $machine) use (&$items, &$states) {
+            $states[] = $machine->getCurrentState()->getValue();
+
             if ($machine->getCurrentState()->isEqualTo(LoopMachineInterface::STATE_LOOP)) {
-                $states[] = $machine->getCurrentItem();
+                $items[] = $machine->getCurrentItem();
             }
         });
         $subject->attach($observer);
         $subject->process($data);
 
-        $this->assertEquals($data, $states, 'Machine did not iterate over all of the data correctly', $delta = 0.0, $maxDepth = 10, $canonicalize = true);
+        $this->assertEquals($data, $items, 'Machine did not iterate over all of the data correctly', $delta = 0.0, $maxDepth = 10, $canonicalize = true);
+        $this->assertEquals(array(
+            LoopMachineInterface::STATE_START,
+            LoopMachineInterface::STATE_LOOP,
+            LoopMachineInterface::STATE_LOOP,
+            LoopMachineInterface::STATE_LOOP,
+            LoopMachineInterface::STATE_END,
+        ), $states, 'Machine did not enter all the states correctly');
     }
 }
