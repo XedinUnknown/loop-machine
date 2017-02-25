@@ -108,4 +108,15 @@ class LoopMachine extends AbstractLoopMachine implements LoopMachineInterface
     {
         return new InvalidStateException($message, 0, $previous, $state, $machine);
     }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    protected function _createStateInstance($value)
+    {
+        return new State($value);
+    }
+
 }
