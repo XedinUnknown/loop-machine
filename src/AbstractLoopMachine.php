@@ -213,7 +213,7 @@ abstract class AbstractLoopMachine
      */
     protected function _assertValidState($state)
     {
-        if (!$this->_isValidStateValue($state)) {
+        if (!$this->_isValidState($state)) {
             throw $this->_createInvalidStateException(sprintf('State is not valid'), $state, $this);
         }
     }
