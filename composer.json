@@ -13,7 +13,8 @@
     "require": {
         "php":  "^5.3 | ^7.0",
         "dhii/data-key-value-aware-interface": "^0.1",
-        "dhii/stringable-interface": "^0.1"
+        "dhii/stringable-interface": "^0.1",
+        "dhii/state-machine-interface": "dev-develop"
     },
     "require-dev": {
         "dhii/php-cs-fixer-config": "dev-php-5.3",
@@ -31,5 +32,11 @@
         "psr-4": {
             "XedinUnknown\\LoopMachine\\TestStub\\": "test/stub"
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Dhii/machine-state-machine-interface"
+        }
+    ]
 }
